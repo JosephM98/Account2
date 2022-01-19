@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Jan 19 11:01:38 2022
+
+@author: josephmontenegro
+"""
+
+class Account:
+    id = 0
+    def __init__(self, amount, name):
+        Account.id = Account.id + 1
+        self.amount = amount
+        self.name = name
+        
+    def deposit(self, amount):
+        self.amount += amount
+    
+    def withdraw(self, amount):
+        self.amount -= amount
+
+reub = Account(-1000, "RA")
+Ceasar = Account(2000, "CR")
+Gionna = Account(135, "GS")
+Gionna.deposit(15)
+
+Gionna.withdraw(100)
+
+customers = [reub, Ceasar, Gionna]
+funds = 0
+for amt in customers:
+    funds += amt.amount
+print("Total Bank Funds: " + str(funds))
+
+class Investment(Account):
+    def __init__(self, amount, name, interest):
+        super().__init__(amount, name)
+        self.interest = interest
+        
+    def give_interest(self):
+        self.amount = self.amount + self.amount*self.interest
+
+
+Elijah =Investment(5000, "ec", .05)
+print(Elijah.amount)
+Elijah.give_interest()
+print(Elijah.amount)
+print(Elijah.id)
+
+    
